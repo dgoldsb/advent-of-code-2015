@@ -1,0 +1,3 @@
+[submodule "aoc-pyo3"]
+	path = aoc-pyo3
+	url = https://github.com/dgoldsb/aoc-pyo3
