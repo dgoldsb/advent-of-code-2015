@@ -18,8 +18,11 @@ def get_input(year: int, day: int) -> str:
 
 
 def ints(input_: str) -> Generator[int, None, None]:
-    for int_str in re.split(r"\D", input_):
-        yield int(int_str)
+    for int_str in re.split(r"\D+", input_):
+        try:
+            yield int(int_str)
+        except ValueError:
+            pass
 
 
 def group(n: int, iterable: Iterable, fillvalue=None):
