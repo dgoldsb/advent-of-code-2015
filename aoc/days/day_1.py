@@ -1,5 +1,4 @@
 """Solve day 1."""
-
 from aoc_py03 import count_char
 
 from aoc.helpers import time_it
