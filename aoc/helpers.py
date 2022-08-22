@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Generator, Iterable
 
 INPUTS = Path(__file__).parents[1] / "inputs"
+TIMES = {}
 
 
 @lru_cache
@@ -31,8 +32,8 @@ def time_it(func):
         begin = time.time()
         result = func(*args, **kwargs)
         end = time.time()
-        # TODO: Track total and breakdown, print function.
-        print(f"Total time taken in {func.__name__}: {end - begin}")
+        print(f"(Took {end - begin})")
+        TIMES[func] = end - begin
         return result
 
     return wrapped

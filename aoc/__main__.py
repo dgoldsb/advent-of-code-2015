@@ -1,16 +1,28 @@
 """Runs and times all days."""
-from aoc.days.day_1 import part_a, part_b
-from aoc.days.day_2 import part_a as part2a
-from aoc.days.day_2 import part_b as part2b
-from aoc.helpers import get_input
+from importlib import import_module
+from typing import Callable, Any
+
+from aoc.helpers import get_input, TIMES
+
+
+def _get_solver(year: int, day: int, part: str) -> Callable[[str], Any]:
+    """Dynamically import fetch an AoC solver."""
+    mod = import_module(f"aoc.{year}.day_{day}")
+    return getattr(mod, f"part_{part}")
 
 
 def main():
-    # TODO: Dynamic import of everything, try iterate over all days.
-    print(part_a(get_input(2015, 1)))
-    print(part_b(get_input(2015, 1)))
-    print(part2a(get_input(2015, 2)))
-    print(part2b(get_input(2015, 2)))
+    for year in (2015,):
+        for day in range(26):
+            for part in ("a", "b"):
+                try:
+                    solver = _get_solver(year, day, part)
+                    solution = solver(get_input(year, day))
+                    print(f"{year}.{day}.{part}: {solution}")
+                except ImportError:
+                    pass
+    total_time = sum(TIMES.values())
+    print(f"\nTotal time taken (solvers only): {total_time}")
 
 
 if __name__ == "__main__":
