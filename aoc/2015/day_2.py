@@ -1,5 +1,5 @@
 """Solve day 2."""
-from aoc.helpers import ints, group, time_it
+from aoc.helpers import group, ints, time_it
 
 
 @time_it

@@ -3,7 +3,6 @@ import re
 
 from aoc.helpers import time_it
 
-
 DUPLICATE = re.compile(r"(.)\1")
 AEIOU = re.compile(r"[aieou].*[aieou].*[aieou]")
 AB_CD_PQ_XY = re.compile(r"ab|cd|pq|xy")

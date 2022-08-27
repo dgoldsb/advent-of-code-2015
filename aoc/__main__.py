@@ -1,8 +1,8 @@
 """Runs and times all days."""
 from importlib import import_module
-from typing import Callable, Any
+from typing import Any, Callable
 
-from aoc.helpers import get_input, TIMES
+from aoc.helpers import TIMES, get_input
 
 
 def _get_solver(year: int, day: int, part: str) -> Callable[[str], Any]:
